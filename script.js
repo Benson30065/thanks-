@@ -1,40 +1,29 @@
-// Fade in page
+const card = document.querySelector(".card");
+const logo = document.querySelector(".logo");
+const heart = document.querySelector(".heart");
 
-document.addEventListener("DOMContentLoaded", () => {
-
-    document.querySelector(".container").classList.add("fade-in");
-
+window.addEventListener("load", () => {
+    card.style.opacity = "1";
 });
-
-// Animated title
-
-const title = document.getElementById("title");
-
-let visible = true;
-
-setInterval(() => {
-
-    title.style.opacity = visible ? "0.85" : "1";
-
-    visible = !visible;
-
-}, 1200);
-
-// Parallax background
 
 document.addEventListener("mousemove", (e) => {
+    const x = (window.innerWidth / 2 - e.clientX) / 60;
+    const y = (window.innerHeight / 2 - e.clientY) / 60;
 
-    const circles = document.querySelectorAll(".circle");
-
-    circles.forEach((circle, index) => {
-
-        const speed = (index + 1) * 0.01;
-
-        const x = (window.innerWidth / 2 - e.clientX) * speed;
-        const y = (window.innerHeight / 2 - e.clientY) * speed;
-
-        circle.style.transform = `translate(${x}px, ${y}px)`;
-
-    });
-
+    card.style.transform = `translate(${x}px, ${y}px)`;
 });
+
+logo.addEventListener("mouseenter", () => {
+    logo.style.transform = "translateX(-50%) scale(1.1)";
+});
+
+logo.addEventListener("mouseleave", () => {
+    logo.style.transform = "translateX(-50%) scale(1)";
+});
+
+setInterval(() => {
+    heart.style.transform = "scale(1.15)";
+    setTimeout(() => {
+        heart.style.transform = "scale(1)";
+    }, 400);
+}, 1600);
