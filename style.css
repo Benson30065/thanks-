@@ -1,342 +1,313 @@
 @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;600;700&display=swap');
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-body{
-    min-height:100vh;
-    overflow:hidden;
-    font-family:'Playfair Display',serif;
-    color:#0b2742;
-    background:#102c46;
-    display:flex;
-    justify-content:center;
-    align-items:center;
+body {
+  min-height: 100vh;
+  font-family: 'Playfair Display', serif;
+  color: #082742;
+  background:
+    linear-gradient(rgba(5, 20, 35, .25), rgba(5, 20, 35, .45)),
+    url("background.png") center/cover no-repeat;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow-x: hidden;
+  padding: 90px 18px 40px;
 }
 
-.background{
-    position:fixed;
-    inset:0;
-    z-index:-5;
-    background:
-        linear-gradient(rgba(255,193,92,.25), rgba(8,39,65,.45)),
-        radial-gradient(circle at 35% 28%, #ffd37d 0%, transparent 18%),
-        linear-gradient(135deg,#8fc6d8,#f6c779 45%,#204969 100%);
+.bg-overlay {
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(circle at 50% 20%, rgba(255, 221, 150, .45), transparent 35%),
+    linear-gradient(to bottom, rgba(255,255,255,.08), rgba(5,20,35,.35));
+  z-index: -2;
 }
 
-.sun{
-    position:absolute;
-    left:25%;
-    top:33%;
-    width:120px;
-    height:120px;
-    border-radius:50%;
-    background:#fff3bd;
-    box-shadow:0 0 90px 60px rgba(255,210,120,.8);
+.card {
+  width: 100%;
+  max-width: 760px;
+  padding: 78px 58px 38px;
+  text-align: center;
+  position: relative;
+  border-radius: 34px;
+  background: rgba(255, 248, 235, .58);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1.5px solid rgba(255, 255, 255, .75);
+  box-shadow:
+    0 35px 90px rgba(0,0,0,.38),
+    inset 0 0 35px rgba(255,255,255,.35);
+  animation: fadeUp 1.3s ease forwards;
+  transform-style: preserve-3d;
 }
 
-.mountains{
-    position:absolute;
-    right:0;
-    bottom:28%;
-    width:75%;
-    height:45%;
-    background:
-        linear-gradient(135deg,transparent 40%,rgba(57,77,71,.7) 41% 55%,transparent 56%),
-        linear-gradient(45deg,transparent 45%,rgba(79,87,75,.8) 46% 60%,transparent 61%);
-    opacity:.8;
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 12px;
+  border: 1px solid rgba(214,162,67,.75);
+  border-radius: 26px;
+  pointer-events: none;
 }
 
-.water{
-    position:absolute;
-    bottom:0;
-    width:100%;
-    height:45%;
-    background:
-        repeating-linear-gradient(
-            0deg,
-            rgba(255,255,255,.15) 0px,
-            rgba(255,255,255,.15) 2px,
-            transparent 4px,
-            transparent 12px
-        ),
-        linear-gradient(#9dc1bd,#204969);
+.logo {
+  position: absolute;
+  top: -58px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 116px;
+  height: 116px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #061f37, #0b3457);
+  color: #f0c66b;
+  border: 4px solid #d6a243;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+  box-shadow: 0 18px 35px rgba(0,0,0,.35);
+  transition: .35s ease;
 }
 
-.jesus{
-    position:absolute;
-    left:7%;
-    bottom:17%;
-    width:210px;
-    height:520px;
-    filter:drop-shadow(0 15px 25px rgba(0,0,0,.4));
+h1 {
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(64px, 12vw, 116px);
+  font-weight: 400;
+  color: #9b6a19;
+  line-height: 1;
+  margin-bottom: 18px;
+  text-shadow: 0 3px 12px rgba(255,255,255,.6);
 }
 
-.head{
-    position:absolute;
-    top:20px;
-    left:75px;
-    width:60px;
-    height:75px;
-    border-radius:50%;
-    background:#c58b5d;
+.divider {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  color: #c49232;
+  margin: 10px 0 24px;
 }
 
-.hair{
-    position:absolute;
-    top:15px;
-    left:58px;
-    width:85px;
-    height:110px;
-    border-radius:50%;
-    background:#5d321f;
+.divider span {
+  width: 100px;
+  height: 1.5px;
+  background: linear-gradient(to right, transparent, #c49232, transparent);
 }
 
-.body{
-    position:absolute;
-    top:90px;
-    left:35px;
-    width:135px;
-    height:390px;
-    border-radius:60px 60px 20px 20px;
-    background:linear-gradient(90deg,#d8c2a3,#f2e3c8,#b8956a);
+.divider p {
+  font-size: 24px;
 }
 
-.arm{
-    position:absolute;
-    top:180px;
-    left:135px;
-    width:110px;
-    height:35px;
-    border-radius:40px;
-    background:#e8d1b3;
-    transform:rotate(25deg);
+.intro {
+  font-size: clamp(17px, 2.5vw, 22px);
+  line-height: 1.5;
+  margin-bottom: 26px;
 }
 
-.card{
-    width:90%;
-    max-width:720px;
-    padding:70px 55px 30px;
-    text-align:center;
-    background:rgba(255,248,235,.92);
-    border:2px solid rgba(255,255,255,.7);
-    border-radius:22px;
-    box-shadow:0 25px 60px rgba(0,0,0,.35);
-    position:relative;
-    animation:fadeUp 1.2s ease;
+.name-box {
+  background: linear-gradient(145deg, rgba(5,24,43,.96), rgba(11,52,87,.96));
+  color: white;
+  border: 1.5px solid #d6a243;
+  border-radius: 20px;
+  padding: 28px 20px;
+  margin: 24px auto;
+  box-shadow:
+    inset 0 0 25px rgba(0,0,0,.35),
+    0 15px 30px rgba(0,0,0,.22);
 }
 
-.logo{
-    position:absolute;
-    top:-55px;
-    left:50%;
-    transform:translateX(-50%);
-    width:110px;
-    height:110px;
-    border-radius:50%;
-    background:#082742;
-    color:#d6a243;
-    border:3px solid #d6a243;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:48px;
-    box-shadow:0 10px 25px rgba(0,0,0,.25);
+.name-box h2 {
+  color: #d6a243;
+  font-size: 17px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  margin-bottom: 18px;
 }
 
-h1{
-    font-family:'Great Vibes',cursive;
-    font-size:100px;
-    font-weight:400;
-    line-height:1;
-    margin-bottom:15px;
-    color:#082742;
+.name-box h3 {
+  color: #f4d084;
+  font-size: clamp(24px, 4vw, 34px);
+  font-weight: 600;
+  margin: 12px 0;
 }
 
-.divider{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    gap:14px;
-    margin:10px 0 22px;
-    color:#d6a243;
+.small-line {
+  width: 70%;
+  height: 1px;
+  background: linear-gradient(to right, transparent, #d6a243, transparent);
+  margin: 10px auto;
 }
 
-.divider span{
-    width:90px;
-    height:2px;
-    background:#d6a243;
+.message {
+  font-size: clamp(16px, 2.2vw, 19px);
+  line-height: 1.55;
+  margin: 15px 0;
 }
 
-.divider p{
-    font-size:22px;
+.heart {
+  width: 54px;
+  height: 54px;
+  margin: 22px auto 12px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #ff7b6f, #9d1d25);
+  color: white;
+  font-size: 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow:
+    0 0 0 0 rgba(255,120,110,.55),
+    0 0 25px rgba(255,120,110,.6);
+  animation: heartPulse 1.7s infinite ease-in-out;
 }
 
-.intro{
-    font-size:21px;
-    line-height:1.5;
-    margin-bottom:25px;
+.signature {
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(34px, 6vw, 46px);
+  color: #8a5b12;
 }
 
-.name-box{
-    background:linear-gradient(145deg,#061f37,#0c3455);
-    color:white;
-    border:2px solid #d6a243;
-    border-radius:10px;
-    padding:25px;
-    margin:20px auto;
-    box-shadow:inset 0 0 20px rgba(0,0,0,.25);
+.family {
+  color: #082742;
+  font-size: clamp(15px, 2.3vw, 21px);
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  font-weight: bold;
 }
 
-.name-box h2{
-    color:#d6a243;
-    font-size:18px;
-    text-transform:uppercase;
-    letter-spacing:2px;
-    margin-bottom:18px;
+.scripture {
+  width: 100%;
+  max-width: 760px;
+  margin-top: 26px;
+  padding: 28px 28px 24px;
+  text-align: center;
+  border-radius: 28px;
+  background: rgba(255, 248, 235, .48);
+  backdrop-filter: blur(16px);
+  border: 1.5px solid rgba(255,255,255,.72);
+  box-shadow: 0 20px 55px rgba(0,0,0,.28);
+  opacity: 0;
+  transform: translateY(30px);
+  animation: scriptureFade 1.3s ease forwards;
+  animation-delay: .8s;
 }
 
-.name-box h3{
-    font-size:31px;
-    font-weight:600;
-    margin:10px 0;
+.scripture p {
+  font-size: clamp(16px, 2.5vw, 21px);
+  font-style: italic;
+  line-height: 1.55;
 }
 
-.small-line{
-    width:70%;
-    height:1px;
-    background:#d6a243;
-    margin:8px auto;
+.scripture h4 {
+  color: #9b6a19;
+  margin-top: 12px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
 }
 
-.message{
-    font-size:18px;
-    line-height:1.45;
-    margin:15px 0;
+.book {
+  font-size: 28px;
+  margin-bottom: 8px;
 }
 
-.message strong{
-    font-weight:700;
+.petal {
+  position: fixed;
+  top: -40px;
+  font-size: 22px;
+  z-index: 3;
+  pointer-events: none;
+  animation: fall linear forwards;
 }
 
-.small{
-    margin:10px 0;
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(45px) scale(.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
-.small span{
-    width:60px;
+@keyframes scriptureFade {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.heart{
-    width:42px;
-    height:42px;
-    margin:15px auto 10px;
-    border-radius:50%;
-    background:#082742;
-    color:white;
-    font-size:34px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
+@keyframes heartPulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(255,120,110,.5), 0 0 25px rgba(255,120,110,.55);
+  }
+  50% {
+    transform: scale(1.14);
+    box-shadow: 0 0 0 14px rgba(255,120,110,0), 0 0 35px rgba(255,120,110,.85);
+  }
 }
 
-.signature{
-    font-family:'Great Vibes',cursive;
-    font-size:34px;
-    color:#082742;
+@keyframes fall {
+  to {
+    transform: translateY(110vh) rotate(360deg);
+    opacity: 0;
+  }
 }
 
-.family{
-    color:#d6a243;
-    font-size:22px;
-    text-transform:uppercase;
-    letter-spacing:3px;
-    font-weight:bold;
+@media (max-width: 700px) {
+  body {
+    padding: 80px 12px 35px;
+    justify-content: flex-start;
+  }
+
+  .card {
+    padding: 68px 22px 32px;
+    border-radius: 26px;
+  }
+
+  .logo {
+    width: 92px;
+    height: 92px;
+    top: -46px;
+    font-size: 38px;
+  }
+
+  .divider span {
+    width: 62px;
+  }
+
+  .name-box {
+    padding: 22px 14px;
+  }
+
+  .family {
+    letter-spacing: 2px;
+  }
+
+  .scripture {
+    padding: 22px 18px;
+  }
 }
 
-footer{
-    position:fixed;
-    bottom:0;
-    left:0;
-    width:100%;
-    background:#082742;
-    color:white;
-    text-align:center;
-    padding:22px 10px 14px;
-    border-top:5px solid #d6a243;
-}
+@media (max-width: 420px) {
+  .card {
+    padding-inline: 16px;
+  }
 
-footer p{
-    font-size:18px;
-}
+  .name-box h2 {
+    font-size: 13px;
+    letter-spacing: 1.8px;
+  }
 
-footer h4{
-    color:#d6a243;
-    text-transform:uppercase;
-    letter-spacing:3px;
-    margin-top:5px;
-}
-
-@keyframes fadeUp{
-    from{
-        opacity:0;
-        transform:translateY(40px);
-    }
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
-}
-
-@media(max-width:900px){
-    body{
-        overflow:auto;
-        padding:80px 0 130px;
-    }
-
-    .jesus{
-        opacity:.35;
-        left:-20px;
-    }
-
-    .card{
-        padding:65px 25px 30px;
-    }
-
-    h1{
-        font-size:75px;
-    }
-
-    .name-box h3{
-        font-size:24px;
-    }
-
-    .intro,
-    .message{
-        font-size:16px;
-    }
-}
-
-@media(max-width:500px){
-    h1{
-        font-size:58px;
-    }
-
-    .logo{
-        width:90px;
-        height:90px;
-        font-size:38px;
-        top:-45px;
-    }
-
-    .card{
-        width:94%;
-    }
-
-    footer p{
-        font-size:14px;
-    }
+  .divider span {
+    width: 45px;
+  }
 }
