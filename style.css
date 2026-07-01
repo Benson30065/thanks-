@@ -1,0 +1,230 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:linear-gradient(135deg,#4facfe,#00c6fb,#8fd3ff);
+
+    overflow:hidden;
+}
+
+.background{
+
+    position:fixed;
+    inset:0;
+    overflow:hidden;
+    z-index:-1;
+
+}
+
+.circle{
+
+    position:absolute;
+    border-radius:50%;
+    background:rgba(255,255,255,.15);
+    animation:float 18s linear infinite;
+
+}
+
+.circle:nth-child(1){
+
+    width:200px;
+    height:200px;
+    left:5%;
+    top:10%;
+
+}
+
+.circle:nth-child(2){
+
+    width:120px;
+    height:120px;
+    right:10%;
+    top:18%;
+
+}
+
+.circle:nth-child(3){
+
+    width:250px;
+    height:250px;
+    bottom:-70px;
+    left:25%;
+
+}
+
+.circle:nth-child(4){
+
+    width:150px;
+    height:150px;
+    right:15%;
+    bottom:12%;
+
+}
+
+.container{
+
+    width:90%;
+    max-width:900px;
+
+    padding:50px;
+
+    background:rgba(255,255,255,.18);
+
+    backdrop-filter:blur(18px);
+
+    border-radius:25px;
+
+    border:1px solid rgba(255,255,255,.25);
+
+    color:white;
+
+    text-align:center;
+
+    box-shadow:0 25px 50px rgba(0,0,0,.25);
+
+}
+
+.cross{
+
+    font-size:70px;
+    margin-bottom:15px;
+
+}
+
+h1{
+
+    font-size:3rem;
+    margin-bottom:20px;
+
+}
+
+.subtitle{
+
+    font-size:1.15rem;
+    line-height:1.8;
+    margin-bottom:30px;
+
+}
+
+.names{
+
+    background:rgba(255,255,255,.15);
+
+    padding:25px;
+
+    border-radius:20px;
+
+    margin:30px 0;
+
+}
+
+.names h2{
+
+    margin-bottom:18px;
+
+}
+
+.names p{
+
+    font-size:1.2rem;
+    margin:12px;
+
+}
+
+.message{
+
+    line-height:2;
+    font-size:1.05rem;
+
+}
+
+.footer{
+
+    margin-top:40px;
+    font-size:1rem;
+
+}
+
+.fade-in{
+
+    animation:fadeIn 1.4s ease;
+
+}
+
+@keyframes fadeIn{
+
+    from{
+
+        opacity:0;
+        transform:translateY(40px);
+
+    }
+
+    to{
+
+        opacity:1;
+        transform:translateY(0);
+
+    }
+
+}
+
+@keyframes float{
+
+    0%{
+
+        transform:translateY(0) rotate(0deg);
+
+    }
+
+    50%{
+
+        transform:translateY(-30px) rotate(180deg);
+
+    }
+
+    100%{
+
+        transform:translateY(0) rotate(360deg);
+
+    }
+
+}
+
+@media(max-width:768px){
+
+.container{
+
+padding:30px;
+
+}
+
+h1{
+
+font-size:2.2rem;
+
+}
+
+.subtitle{
+
+font-size:1rem;
+
+}
+
+.names p{
+
+font-size:1rem;
+
+}
+
+}
