@@ -35,10 +35,13 @@ if (!isTouchDevice) {
 
 badge.addEventListener("mouseenter", () => {
   badge.style.transform = "scale(1.08)";
+  badge.style.boxShadow =
+    "0 20px 42px rgba(0,0,0,.48), 0 0 40px rgba(255, 214, 118, .62)";
 });
 
 badge.addEventListener("mouseleave", () => {
   badge.style.transform = "scale(1)";
+  badge.style.boxShadow = "";
 });
 
 const observer = new IntersectionObserver((entries) => {
@@ -47,7 +50,9 @@ const observer = new IntersectionObserver((entries) => {
       scripture.classList.add("visible");
     }
   });
-}, { threshold: 0.25 });
+}, {
+  threshold: 0.25
+});
 
 observer.observe(scripture);
 
@@ -64,13 +69,16 @@ function createPetal() {
   petal.style.left = Math.random() * 100 + "vw";
   petal.style.fontSize = Math.random() * 13 + 13 + "px";
   petal.style.animationDuration = Math.random() * 5 + 6 + "s";
+
   petal.style.setProperty("--drift", (Math.random() * 220 - 110) + "px");
   petal.style.setProperty("--spin", (Math.random() * 700 - 350) + "deg");
   petal.style.setProperty("--petal-opacity", Math.random() * 0.55 + 0.35);
 
   petalsContainer.appendChild(petal);
 
-  setTimeout(() => petal.remove(), 12000);
+  setTimeout(() => {
+    petal.remove();
+  }, 12000);
 }
 
 for (let i = 0; i < 35; i++) {
