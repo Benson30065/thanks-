@@ -1,313 +1,311 @@
-@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Inter:wght@400;500;600&display=swap');
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+*{margin:0;padding:0;box-sizing:border-box}
 
-body {
-  min-height: 100vh;
-  font-family: 'Playfair Display', serif;
-  color: #082742;
+body{
+  min-height:100vh;
+  font-family:'Cormorant Garamond',serif;
   background:
-    linear-gradient(rgba(5, 20, 35, .25), rgba(5, 20, 35, .45)),
-    url("background.png") center/cover no-repeat;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  overflow-x: hidden;
-  padding: 90px 18px 40px;
+    linear-gradient(rgba(4,14,28,.35),rgba(4,14,28,.72)),
+    url("background.png") center/cover fixed no-repeat;
+  overflow-x:hidden;
 }
 
-.bg-overlay {
-  position: fixed;
-  inset: 0;
+.background-glow{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
   background:
-    radial-gradient(circle at 50% 20%, rgba(255, 221, 150, .45), transparent 35%),
-    linear-gradient(to bottom, rgba(255,255,255,.08), rgba(5,20,35,.35));
-  z-index: -2;
+    radial-gradient(circle at 50% 14%,rgba(255,225,160,.34),transparent 31%),
+    linear-gradient(0deg,rgba(0,0,0,.55),transparent 45%);
+  z-index:-1;
 }
 
-.card {
-  width: 100%;
-  max-width: 760px;
-  padding: 78px 58px 38px;
-  text-align: center;
-  position: relative;
-  border-radius: 34px;
-  background: rgba(255, 248, 235, .58);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  border: 1.5px solid rgba(255, 255, 255, .75);
-  box-shadow:
-    0 35px 90px rgba(0,0,0,.38),
-    inset 0 0 35px rgba(255,255,255,.35);
-  animation: fadeUp 1.3s ease forwards;
-  transform-style: preserve-3d;
+.page{
+  width:min(100%,980px);
+  min-height:100vh;
+  margin:auto;
+  padding:92px 18px 44px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
 }
 
-.card::before {
-  content: "";
-  position: absolute;
-  inset: 12px;
-  border: 1px solid rgba(214,162,67,.75);
-  border-radius: 26px;
-  pointer-events: none;
+.thank-card{
+  width:min(100%,800px);
+  position:relative;
+  text-align:center;
+  padding:88px 62px 42px;
+  border-radius:42px;
+  background:linear-gradient(145deg,rgba(255,255,255,.52),rgba(255,255,255,.20));
+  backdrop-filter:blur(22px);
+  border:1px solid rgba(255,255,255,.74);
+  box-shadow:0 40px 100px rgba(0,0,0,.48),inset 0 0 44px rgba(255,255,255,.24);
+  overflow:hidden;
+  animation:riseIn 1.2s ease both;
 }
 
-.logo {
-  position: absolute;
-  top: -58px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 116px;
-  height: 116px;
-  border-radius: 50%;
-  background: linear-gradient(145deg, #061f37, #0b3457);
-  color: #f0c66b;
-  border: 4px solid #d6a243;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 48px;
-  box-shadow: 0 18px 35px rgba(0,0,0,.35);
-  transition: .35s ease;
+.thank-card::before{
+  content:"";
+  position:absolute;
+  inset:13px;
+  border-radius:32px;
+  border:1px solid rgba(255,224,150,.86);
+  pointer-events:none;
 }
 
-h1 {
-  font-family: 'Great Vibes', cursive;
-  font-size: clamp(64px, 12vw, 116px);
-  font-weight: 400;
-  color: #9b6a19;
-  line-height: 1;
-  margin-bottom: 18px;
-  text-shadow: 0 3px 12px rgba(255,255,255,.6);
+.thank-card::after{
+  content:"";
+  position:absolute;
+  top:-45%;
+  left:-40%;
+  width:60%;
+  height:150%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.32),transparent);
+  transform:rotate(25deg);
+  animation:shine 6s ease-in-out infinite;
 }
 
-.divider {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 14px;
-  color: #c49232;
-  margin: 10px 0 24px;
+.top-badge{
+  position:absolute;
+  top:-55px;
+  left:50%;
+  transform:translateX(-50%);
+  display:flex;
+  gap:16px;
+  align-items:center;
+  color:#ffe7a3;
+  z-index:4;
 }
 
-.divider span {
-  width: 100px;
-  height: 1.5px;
-  background: linear-gradient(to right, transparent, #c49232, transparent);
+.church-icon{
+  width:116px;
+  height:116px;
+  border-radius:50%;
+  background:linear-gradient(145deg,#061a2f,#0c3b63);
+  border:4px solid #d8aa4f;
+  display:grid;
+  place-items:center;
+  font-size:47px;
+  box-shadow:0 18px 35px rgba(0,0,0,.42),0 0 28px rgba(255,214,118,.42);
+  transition:.35s ease;
 }
 
-.divider p {
-  font-size: 24px;
+.eyebrow{
+  font-family:'Inter',sans-serif;
+  text-transform:uppercase;
+  letter-spacing:3px;
+  font-size:12px;
+  color:#8d5d16;
+  font-weight:600;
 }
 
-.intro {
-  font-size: clamp(17px, 2.5vw, 22px);
-  line-height: 1.5;
-  margin-bottom: 26px;
+h1{
+  font-family:'Great Vibes',cursive;
+  font-size:clamp(70px,13vw,128px);
+  line-height:.95;
+  font-weight:400;
+  color:#9a6818;
+  text-shadow:0 6px 22px rgba(255,255,255,.58);
 }
 
-.name-box {
-  background: linear-gradient(145deg, rgba(5,24,43,.96), rgba(11,52,87,.96));
-  color: white;
-  border: 1.5px solid #d6a243;
-  border-radius: 20px;
-  padding: 28px 20px;
-  margin: 24px auto;
-  box-shadow:
-    inset 0 0 25px rgba(0,0,0,.35),
-    0 15px 30px rgba(0,0,0,.22);
+.gold-divider{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:14px;
+  margin:18px auto 24px;
+  color:#b87f20;
 }
 
-.name-box h2 {
-  color: #d6a243;
-  font-size: 17px;
-  text-transform: uppercase;
-  letter-spacing: 2.5px;
-  margin-bottom: 18px;
+.gold-divider span{
+  width:min(110px,28vw);
+  height:1.5px;
+  background:linear-gradient(90deg,transparent,#d8aa4f,transparent);
 }
 
-.name-box h3 {
-  color: #f4d084;
-  font-size: clamp(24px, 4vw, 34px);
-  font-weight: 600;
-  margin: 12px 0;
+.gold-divider b{
+  font-size:25px;
 }
 
-.small-line {
-  width: 70%;
-  height: 1px;
-  background: linear-gradient(to right, transparent, #d6a243, transparent);
-  margin: 10px auto;
+.intro{
+  max-width:630px;
+  margin:0 auto 28px;
+  color:#09253f;
+  font-size:clamp(19px,3vw,25px);
+  line-height:1.35;
+  font-weight:600;
 }
 
-.message {
-  font-size: clamp(16px, 2.2vw, 19px);
-  line-height: 1.55;
-  margin: 15px 0;
+.names{
+  margin:24px auto 28px;
+  padding:30px 24px;
+  border-radius:24px;
+  background:linear-gradient(145deg,rgba(6,27,49,.96),rgba(10,54,90,.96));
+  border:1.5px solid #d8aa4f;
+  box-shadow:inset 0 0 32px rgba(0,0,0,.42),0 18px 42px rgba(0,0,0,.28);
 }
 
-.heart {
-  width: 54px;
-  height: 54px;
-  margin: 22px auto 12px;
-  border-radius: 50%;
-  background: radial-gradient(circle, #ff7b6f, #9d1d25);
-  color: white;
-  font-size: 28px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow:
-    0 0 0 0 rgba(255,120,110,.55),
-    0 0 25px rgba(255,120,110,.6);
-  animation: heartPulse 1.7s infinite ease-in-out;
+.names h2{
+  font-family:'Inter',sans-serif;
+  color:#ffe7a3;
+  font-size:clamp(12px,2.2vw,16px);
+  letter-spacing:2.8px;
+  text-transform:uppercase;
+  margin-bottom:18px;
 }
 
-.signature {
-  font-family: 'Great Vibes', cursive;
-  font-size: clamp(34px, 6vw, 46px);
-  color: #8a5b12;
+.names article{
+  padding:10px 0 13px;
+  position:relative;
 }
 
-.family {
-  color: #082742;
-  font-size: clamp(15px, 2.3vw, 21px);
-  text-transform: uppercase;
-  letter-spacing: 4px;
-  font-weight: bold;
+.names article:not(:last-child)::after{
+  content:"";
+  width:74%;
+  height:1px;
+  background:linear-gradient(90deg,transparent,#d8aa4f,transparent);
+  position:absolute;
+  left:13%;
+  bottom:0;
 }
 
-.scripture {
-  width: 100%;
-  max-width: 760px;
-  margin-top: 26px;
-  padding: 28px 28px 24px;
-  text-align: center;
-  border-radius: 28px;
-  background: rgba(255, 248, 235, .48);
-  backdrop-filter: blur(16px);
-  border: 1.5px solid rgba(255,255,255,.72);
-  box-shadow: 0 20px 55px rgba(0,0,0,.28);
-  opacity: 0;
-  transform: translateY(30px);
-  animation: scriptureFade 1.3s ease forwards;
-  animation-delay: .8s;
+.names h3{
+  color:#f5d58d;
+  font-size:clamp(27px,5vw,42px);
+  font-weight:600;
 }
 
-.scripture p {
-  font-size: clamp(16px, 2.5vw, 21px);
-  font-style: italic;
-  line-height: 1.55;
+.message{
+  max-width:660px;
+  margin:15px auto;
+  color:#08253f;
+  font-size:clamp(17px,2.6vw,21px);
+  line-height:1.48;
+  font-weight:600;
 }
 
-.scripture h4 {
-  color: #9b6a19;
-  margin-top: 12px;
-  text-transform: uppercase;
-  letter-spacing: 3px;
+.message strong{
+  color:#03172a;
+  font-weight:700;
 }
 
-.book {
-  font-size: 28px;
-  margin-bottom: 8px;
+.heart{
+  width:60px;
+  height:60px;
+  margin:24px auto 12px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  background:radial-gradient(circle at 35% 25%,#ffd0ca,#e95358 38%,#8a111f);
+  color:white;
+  font-size:30px;
+  animation:heartPulse 1.75s ease-in-out infinite;
 }
 
-.petal {
-  position: fixed;
-  top: -40px;
-  font-size: 22px;
-  z-index: 3;
-  pointer-events: none;
-  animation: fall linear forwards;
+.signature{
+  font-family:'Great Vibes',cursive;
+  color:#8b5d15;
+  font-size:clamp(36px,7vw,52px);
 }
 
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(45px) scale(.96);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
+.family{
+  margin-top:8px;
+  font-family:'Inter',sans-serif;
+  color:#09253f;
+  font-size:clamp(13px,2.5vw,17px);
+  text-transform:uppercase;
+  letter-spacing:4px;
+  font-weight:700;
 }
 
-@keyframes scriptureFade {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.scripture-card{
+  width:min(100%,800px);
+  margin-top:28px;
+  padding:30px 28px 26px;
+  text-align:center;
+  border-radius:30px;
+  background:rgba(255,255,255,.22);
+  backdrop-filter:blur(18px);
+  border:1px solid rgba(255,255,255,.68);
+  box-shadow:0 25px 70px rgba(0,0,0,.35);
+  opacity:0;
+  transform:translateY(28px);
 }
 
-@keyframes heartPulse {
-  0%, 100% {
-    transform: scale(1);
-    box-shadow: 0 0 0 0 rgba(255,120,110,.5), 0 0 25px rgba(255,120,110,.55);
-  }
-  50% {
-    transform: scale(1.14);
-    box-shadow: 0 0 0 14px rgba(255,120,110,0), 0 0 35px rgba(255,120,110,.85);
-  }
+.scripture-card.visible{
+  animation:scriptureIn 1.1s ease forwards;
 }
 
-@keyframes fall {
-  to {
-    transform: translateY(110vh) rotate(360deg);
-    opacity: 0;
-  }
+.book{
+  font-size:30px;
+  margin-bottom:8px;
 }
 
-@media (max-width: 700px) {
-  body {
-    padding: 80px 12px 35px;
-    justify-content: flex-start;
-  }
-
-  .card {
-    padding: 68px 22px 32px;
-    border-radius: 26px;
-  }
-
-  .logo {
-    width: 92px;
-    height: 92px;
-    top: -46px;
-    font-size: 38px;
-  }
-
-  .divider span {
-    width: 62px;
-  }
-
-  .name-box {
-    padding: 22px 14px;
-  }
-
-  .family {
-    letter-spacing: 2px;
-  }
-
-  .scripture {
-    padding: 22px 18px;
-  }
+.scripture-card p{
+  color:#fff9eb;
+  text-shadow:0 2px 16px rgba(0,0,0,.55);
+  font-size:clamp(18px,3vw,24px);
+  line-height:1.46;
+  font-style:italic;
 }
 
-@media (max-width: 420px) {
-  .card {
-    padding-inline: 16px;
-  }
+.scripture-card h4{
+  margin-top:13px;
+  font-family:'Inter',sans-serif;
+  color:#ffe7a3;
+  text-transform:uppercase;
+  letter-spacing:3px;
+  font-size:14px;
+}
 
-  .name-box h2 {
-    font-size: 13px;
-    letter-spacing: 1.8px;
-  }
+.petal{
+  position:fixed;
+  top:-45px;
+  z-index:5;
+  pointer-events:none;
+  animation-name:fall;
+  animation-timing-function:linear;
+  animation-fill-mode:forwards;
+}
 
-  .divider span {
-    width: 45px;
-  }
+@keyframes riseIn{
+  from{opacity:0;transform:translateY(55px) scale(.96)}
+  to{opacity:1;transform:translateY(0) scale(1)}
+}
+
+@keyframes scriptureIn{
+  to{opacity:1;transform:translateY(0)}
+}
+
+@keyframes shine{
+  0%,42%{transform:translateX(-40%) rotate(25deg);opacity:0}
+  55%{opacity:.75}
+  72%,100%{transform:translateX(260%) rotate(25deg);opacity:0}
+}
+
+@keyframes heartPulse{
+  0%,100%{transform:scale(1);box-shadow:0 0 0 0 rgba(255,111,114,.45),0 0 34px rgba(255,111,114,.7)}
+  50%{transform:scale(1.13);box-shadow:0 0 0 16px rgba(255,111,114,0),0 0 46px rgba(255,135,132,.95)}
+}
+
+@keyframes fall{
+  0%{transform:translate3d(0,-10vh,0) rotate(0deg);opacity:0}
+  10%{opacity:var(--petal-opacity)}
+  100%{transform:translate3d(var(--drift),112vh,0) rotate(var(--spin));opacity:0}
+}
+
+@media(max-width:760px){
+  body{background-attachment:scroll}
+  .page{padding:78px 12px 32px}
+  .thank-card{padding:72px 22px 34px;border-radius:30px}
+  .top-badge{top:-45px}
+  .church-icon{width:92px;height:92px;font-size:38px}
+  .names{padding:24px 12px}
+  .family{letter-spacing:2.2px}
+}
+
+@media(max-width:430px){
+  .thank-card{padding-inline:15px}
+  .gold-divider{gap:9px}
 }
