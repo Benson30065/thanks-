@@ -1,5 +1,6 @@
-const card = document.querySelector(".card");
-const logo = document.querySelector(".logo");
+const card = document.querySelector(".thank-card");
+const badge = document.querySelector(".church-icon");
+const scripture = document.querySelector(".scripture-card");
 const petalsContainer = document.querySelector(".petals");
 
 let targetX = 0;
@@ -7,56 +8,73 @@ let targetY = 0;
 let currentX = 0;
 let currentY = 0;
 
-document.addEventListener("mousemove", (e) => {
-  targetX = (window.innerWidth / 2 - e.clientX) / 70;
-  targetY = (window.innerHeight / 2 - e.clientY) / 70;
-});
+const isTouchDevice = window.matchMedia("(pointer: coarse)").matches;
 
-function animateCard() {
-  currentX += (targetX - currentX) * 0.06;
-  currentY += (targetY - currentY) * 0.06;
+if (!isTouchDevice) {
+  document.addEventListener("mousemove", (event) => {
+    targetX = (window.innerWidth / 2 - event.clientX) / 72;
+    targetY = (window.innerHeight / 2 - event.clientY) / 72;
+  });
 
-  card.style.transform = `
-    perspective(1000px)
-    rotateY(${currentX / 3}deg)
-    rotateX(${-currentY / 3}deg)
-    translate(${currentX}px, ${currentY}px)
-  `;
+  function animateCard() {
+    currentX += (targetX - currentX) * 0.055;
+    currentY += (targetY - currentY) * 0.055;
 
-  requestAnimationFrame(animateCard);
+    card.style.transform = `
+      perspective(1200px)
+      rotateY(${currentX / 3.4}deg)
+      rotateX(${-currentY / 3.4}deg)
+      translate(${currentX}px, ${currentY}px)
+    `;
+
+    requestAnimationFrame(animateCard);
+  }
+
+  animateCard();
 }
 
-animateCard();
-
-logo.addEventListener("mouseenter", () => {
-  logo.style.transform = "translateX(-50%) scale(1.08)";
+badge.addEventListener("mouseenter", () => {
+  badge.style.transform = "scale(1.08)";
 });
 
-logo.addEventListener("mouseleave", () => {
-  logo.style.transform = "translateX(-50%) scale(1)";
+badge.addEventListener("mouseleave", () => {
+  badge.style.transform = "scale(1)";
 });
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      scripture.classList.add("visible");
+    }
+  });
+}, { threshold: 0.25 });
+
+observer.observe(scripture);
 
 function createPetal() {
   const petal = document.createElement("div");
   petal.className = "petal";
 
-  const petals = ["🌸", "🤍", "🌺", "✨"];
-  petal.textContent = petals[Math.floor(Math.random() * petals.length)];
+  const shapes = ["❦", "✦", "✧", "♡", "✿"];
+  petal.textContent = shapes[Math.floor(Math.random() * shapes.length)];
+
+  const colors = ["#ffe7a3", "#f6c96f", "#fff6d4", "#f2b6c4"];
+  petal.style.color = colors[Math.floor(Math.random() * colors.length)];
 
   petal.style.left = Math.random() * 100 + "vw";
-  petal.style.animationDuration = Math.random() * 4 + 5 + "s";
-  petal.style.opacity = Math.random() * 0.6 + 0.35;
-  petal.style.fontSize = Math.random() * 14 + 14 + "px";
+  petal.style.fontSize = Math.random() * 13 + 13 + "px";
+  petal.style.animationDuration = Math.random() * 5 + 6 + "s";
+  petal.style.setProperty("--drift", (Math.random() * 220 - 110) + "px");
+  petal.style.setProperty("--spin", (Math.random() * 700 - 350) + "deg");
+  petal.style.setProperty("--petal-opacity", Math.random() * 0.55 + 0.35);
 
   petalsContainer.appendChild(petal);
 
-  setTimeout(() => {
-    petal.remove();
-  }, 9000);
+  setTimeout(() => petal.remove(), 12000);
 }
 
-for (let i = 0; i < 28; i++) {
-  setTimeout(createPetal, i * 130);
+for (let i = 0; i < 35; i++) {
+  setTimeout(createPetal, i * 110);
 }
 
-setInterval(createPetal, 700);
+setInterval(createPetal, 620);
