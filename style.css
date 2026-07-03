@@ -6,16 +6,11 @@
     box-sizing:border-box;
 }
 
-html{
-    scroll-behavior:smooth;
-}
-
 body{
     min-height:100vh;
     overflow-x:hidden;
     font-family:'Cormorant Garamond',serif;
     background:#041424;
-    color:#08253f;
 }
 
 /* ===========================
@@ -45,16 +40,16 @@ body{
     inset:0;
     z-index:-4;
     pointer-events:none;
+
     background:
-        radial-gradient(
-            circle at 50% 15%,
-            rgba(255,226,160,.38),
-            transparent 34%
-        ),
+        radial-gradient(circle at 50% 15%,
+        rgba(255,226,160,.38),
+        transparent 34%),
+
         linear-gradient(
-            180deg,
-            rgba(2,10,22,.18),
-            rgba(2,10,22,.78)
+        180deg,
+        rgba(2,10,22,.18),
+        rgba(2,10,22,.78)
         );
 }
 
@@ -66,50 +61,53 @@ body{
 
     background:
         linear-gradient(
-            110deg,
-            transparent 20%,
-            rgba(255,221,140,.14),
-            transparent 45%
+        110deg,
+        transparent 20%,
+        rgba(255,221,140,.14),
+        transparent 45%
         ),
+
         linear-gradient(
-            75deg,
-            transparent 35%,
-            rgba(255,255,255,.09),
-            transparent 60%
+        75deg,
+        transparent 35%,
+        rgba(255,255,255,.09),
+        transparent 60%
         );
 
     animation:raysMove 12s ease-in-out infinite alternate;
 }
 
-.petals{
-    position:fixed;
-    inset:0;
-    pointer-events:none;
-    overflow:hidden;
-    z-index:5;
-}
-
 /* ===========================
-   Main Layout
+   Page Layout
 =========================== */
 
 .page{
+
     width:min(100%,980px);
+
     min-height:100vh;
+
     margin:auto;
+
     padding:92px 18px 44px;
+
     display:flex;
+
     flex-direction:column;
+
     align-items:center;
 }
 
 /* ===========================
-   Thank You Card
+   Main Card
 =========================== */
 
 .thank-card{
+
     width:min(100%,800px);
+
     position:relative;
+
     text-align:center;
 
     padding:88px 62px 42px;
@@ -118,9 +116,9 @@ body{
 
     background:
         linear-gradient(
-            145deg,
-            rgba(255,255,255,.56),
-            rgba(255,255,255,.20)
+        145deg,
+        rgba(255,255,255,.56),
+        rgba(255,255,255,.20)
         );
 
     backdrop-filter:blur(24px) saturate(145%);
@@ -139,27 +137,23 @@ body{
     animation:riseIn 1.2s ease both;
 }
 
-/* ===========================
-   Gold Inner Border
-=========================== */
-
 .thank-card::before{
+
     content:"";
+
     position:absolute;
+
     inset:13px;
 
     border-radius:32px;
 
-    border:1px solid rgba(255,224,150,.90);
+    border:1px solid rgba(255,224,150,.9);
 
     pointer-events:none;
 }
 
-/* ===========================
-   Glass Shine
-=========================== */
-
 .thank-card::after{
+
     content:"";
 
     position:absolute;
@@ -172,10 +166,10 @@ body{
 
     background:
         linear-gradient(
-            90deg,
-            transparent,
-            rgba(255,255,255,.35),
-            transparent
+        90deg,
+        transparent,
+        rgba(255,255,255,.35),
+        transparent
         );
 
     transform:rotate(25deg);
@@ -186,27 +180,31 @@ body{
 }
 
 /* ===========================
-   Church Badge
+   Top Badge
 =========================== */
 
 .top-badge{
     position:absolute;
-    top:-58px;
+
+    top:-45px;
+
     left:50%;
+
     transform:translateX(-50%);
 
     display:flex;
+
     align-items:center;
-    justify-content:center;
+
     gap:18px;
 
-    z-index:20;
+    z-index:10;
 }
 
 .top-badge span{
     color:#ffe7a3;
     font-size:22px;
-    filter:drop-shadow(0 0 10px rgba(255,214,118,.75));
+    text-shadow:0 0 12px rgba(255,220,120,.8);
 }
 
 /* ===========================
@@ -214,7 +212,9 @@ body{
 =========================== */
 
 .church-icon{
+
     width:120px;
+
     height:120px;
 
     border-radius:50%;
@@ -224,28 +224,45 @@ body{
     border:5px solid #d8aa4f;
 
     display:flex;
+
     justify-content:center;
+
     align-items:center;
 
     overflow:hidden;
 
     box-shadow:
         0 18px 35px rgba(0,0,0,.45),
-        0 0 30px rgba(255,214,118,.45);
+        0 0 28px rgba(255,214,118,.45);
 
     transition:.35s ease;
 }
 
 .church-logo{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    border-radius:50%;
-    transition:transform .35s ease;
+
+    width:84%;
+
+    height:84%;
+
+    object-fit:contain;
+
+    object-position:center;
+
+    display:block;
+
+    transition:.35s ease;
+}
+
+.church-icon:hover{
+
+    transform:
+        translateY(-3px)
+        scale(1.03);
 }
 
 .church-icon:hover .church-logo{
-    transform:scale(1.05);
+
+    transform:scale(1.04);
 }
 
 /* ===========================
@@ -253,32 +270,31 @@ body{
 =========================== */
 
 .eyebrow{
-    margin-top:10px;
-    margin-bottom:30px;
+
+    margin-top:24px;
+
+    margin-bottom:24px;
 
     font-family:'Inter',sans-serif;
+
     text-transform:uppercase;
 
-    letter-spacing:3px;
+    letter-spacing:4px;
 
     font-size:12px;
-    font-weight:700;
 
     color:#8d5d16;
-}
 
-.title-space{
-    height:0;
+    font-weight:700;
 }
 
 h1{
-    margin-top:0;
 
     font-family:'Great Vibes',cursive;
 
-    font-size:clamp(70px,13vw,128px);
+    font-size:clamp(72px,13vw,128px);
 
-    line-height:.95;
+    line-height:.92;
 
     font-weight:400;
 
@@ -289,13 +305,16 @@ h1{
 }
 
 /* ===========================
-   Divider
+   Gold Divider
 =========================== */
 
 .gold-divider{
+
     display:flex;
-    align-items:center;
+
     justify-content:center;
+
+    align-items:center;
 
     gap:14px;
 
@@ -305,7 +324,9 @@ h1{
 }
 
 .gold-divider span{
+
     width:min(110px,28vw);
+
     height:1.5px;
 
     background:
@@ -318,7 +339,8 @@ h1{
 }
 
 .gold-divider b{
-    font-size:25px;
+
+    font-size:24px;
 
     filter:
         drop-shadow(
@@ -327,11 +349,13 @@ h1{
 }
 
 /* ===========================
-   Intro Text
+   Intro
 =========================== */
 
 .intro{
+
     max-width:630px;
+
     margin:0 auto 28px;
 
     color:#09253f;
@@ -344,10 +368,11 @@ h1{
 }
 
 /* ===========================
-   Names Section
+   Names Card
 =========================== */
 
 .names{
+
     margin:24px auto 28px;
 
     padding:30px 24px;
@@ -374,6 +399,7 @@ h1{
 }
 
 .names h2{
+
     font-family:'Inter',sans-serif;
 
     color:#ffe7a3;
@@ -388,15 +414,24 @@ h1{
 }
 
 .names article{
+
     padding:10px 0 13px;
 
     position:relative;
 }
 
 .names article:not(:last-child)::after{
+
     content:"";
 
+    position:absolute;
+
+    left:13%;
+
+    bottom:0;
+
     width:74%;
+
     height:1px;
 
     background:
@@ -406,14 +441,10 @@ h1{
             #d8aa4f,
             transparent
         );
-
-    position:absolute;
-
-    left:13%;
-    bottom:0;
 }
 
 .names h3{
+
     color:#f5d58d;
 
     font-size:clamp(27px,5vw,42px);
@@ -429,7 +460,6 @@ h1{
 
 .message{
     max-width:660px;
-
     margin:15px auto;
 
     color:#08253f;
@@ -455,6 +485,7 @@ h1{
 =========================== */
 
 .heart{
+
     width:60px;
     height:60px;
 
@@ -489,6 +520,7 @@ h1{
 =========================== */
 
 .signature{
+
     font-family:'Great Vibes',cursive;
 
     color:#8b5d15;
@@ -501,6 +533,7 @@ h1{
 }
 
 .family{
+
     margin-top:8px;
 
     font-family:'Inter',sans-serif;
@@ -521,6 +554,7 @@ h1{
 =========================== */
 
 .scripture-card{
+
     width:min(100%,800px);
 
     margin-top:28px;
@@ -558,6 +592,7 @@ h1{
 }
 
 .book{
+
     font-size:34px;
 
     color:#ffe7a3;
@@ -571,6 +606,7 @@ h1{
 }
 
 .scripture-card p{
+
     color:#fff9eb;
 
     text-shadow:
@@ -584,6 +620,7 @@ h1{
 }
 
 .scripture-card h4{
+
     margin-top:15px;
 
     font-family:'Inter',sans-serif;
@@ -603,23 +640,13 @@ h1{
 
 .petal{
     position:fixed;
-
     top:-45px;
-
     z-index:5;
-
     pointer-events:none;
-
     animation-name:fall;
-
     animation-timing-function:linear;
-
     animation-fill-mode:forwards;
-
-    filter:
-        drop-shadow(
-            0 6px 8px rgba(0,0,0,.25)
-        );
+    filter:drop-shadow(0 6px 8px rgba(0,0,0,.25));
 }
 
 /* ===========================
@@ -629,36 +656,25 @@ h1{
 @keyframes riseIn{
     from{
         opacity:0;
-
-        transform:
-            translateY(55px)
-            scale(.96);
+        transform:translateY(55px) scale(.96);
     }
 
     to{
         opacity:1;
-
-        transform:
-            translateY(0)
-            scale(1);
+        transform:translateY(0) scale(1);
     }
 }
 
 @keyframes scriptureIn{
     to{
         opacity:1;
-
         transform:translateY(0);
     }
 }
 
 @keyframes shine{
-    0%,
-    42%{
-        transform:
-            translateX(-40%)
-            rotate(25deg);
-
+    0%,42%{
+        transform:translateX(-40%) rotate(25deg);
         opacity:0;
     }
 
@@ -666,12 +682,8 @@ h1{
         opacity:.75;
     }
 
-    72%,
-    100%{
-        transform:
-            translateX(260%)
-            rotate(25deg);
-
+    72%,100%{
+        transform:translateX(260%) rotate(25deg);
         opacity:0;
     }
 }
@@ -679,22 +691,18 @@ h1{
 @keyframes raysMove{
     from{
         opacity:.35;
-
         transform:translateX(-40px);
     }
 
     to{
         opacity:.75;
-
         transform:translateX(40px);
     }
 }
 
 @keyframes heartPulse{
-    0%,
-    100%{
+    0%,100%{
         transform:scale(1);
-
         box-shadow:
             0 0 0 0 rgba(255,111,114,.45),
             0 0 34px rgba(255,111,114,.7);
@@ -702,7 +710,6 @@ h1{
 
     50%{
         transform:scale(1.13);
-
         box-shadow:
             0 0 0 16px rgba(255,111,114,0),
             0 0 46px rgba(255,135,132,.95);
@@ -711,10 +718,7 @@ h1{
 
 @keyframes fall{
     0%{
-        transform:
-            translate3d(0,-10vh,0)
-            rotate(0deg);
-
+        transform:translate3d(0,-10vh,0) rotate(0deg);
         opacity:0;
     }
 
@@ -723,10 +727,7 @@ h1{
     }
 
     100%{
-        transform:
-            translate3d(var(--drift),112vh,0)
-            rotate(var(--spin));
-
+        transform:translate3d(var(--drift),112vh,0) rotate(var(--spin));
         opacity:0;
     }
 }
@@ -735,7 +736,7 @@ h1{
    Tablet
 =========================== */
 
-@media (max-width:760px){
+@media(max-width:760px){
 
     .hero-image img{
         transform:scale(1.02);
@@ -756,12 +757,19 @@ h1{
     }
 
     .top-badge{
-        top:-48px;
+        top:-36px;
+        gap:12px;
     }
 
     .church-icon{
         width:92px;
         height:92px;
+        border-width:4px;
+    }
+
+    .church-logo{
+        width:84%;
+        height:84%;
     }
 
     .top-badge span{
@@ -769,9 +777,10 @@ h1{
     }
 
     .eyebrow{
+        margin-top:22px;
+        margin-bottom:22px;
         font-size:10px;
         letter-spacing:2.2px;
-        margin-bottom:22px;
     }
 
     .names{
@@ -780,7 +789,7 @@ h1{
     }
 
     .family{
-        letter-spacing:2px;
+        letter-spacing:2.2px;
     }
 
     .scripture-card{
@@ -793,7 +802,7 @@ h1{
    Mobile
 =========================== */
 
-@media (max-width:430px){
+@media(max-width:430px){
 
     .page{
         padding-inline:9px;
@@ -803,15 +812,20 @@ h1{
         padding:70px 15px 30px;
     }
 
+    .top-badge{
+        top:-32px;
+        gap:9px;
+    }
+
     .church-icon{
-        width:82px;
-        height:82px;
+        width:80px;
+        height:80px;
         border-width:4px;
     }
 
-    .top-badge{
-        top:-42px;
-        gap:10px;
+    .church-logo{
+        width:84%;
+        height:84%;
     }
 
     .top-badge span{
