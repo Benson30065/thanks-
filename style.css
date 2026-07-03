@@ -53,7 +53,7 @@ body {
   width: min(100%, 980px);
   min-height: 100vh;
   margin: auto;
-  padding: 92px 18px 44px;
+  padding: 110px 18px 44px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -73,7 +73,7 @@ body {
   box-shadow:
     0 40px 110px rgba(0,0,0,.52),
     inset 0 0 44px rgba(255,255,255,.25);
-  overflow: hidden;
+  overflow: visible;
   transform-style: preserve-3d;
   animation: riseIn 1.2s ease both;
 }
@@ -94,27 +94,33 @@ body {
   left: -40%;
   width: 60%;
   height: 150%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,.35), transparent);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,.35),
+    transparent
+  );
   transform: rotate(25deg);
   animation: shine 6s ease-in-out infinite;
   pointer-events: none;
 }
 
-.church-symbol {
-  transform: translateY(4px);
-  display: inline-block;
-}
-
 .top-badge {
   position: absolute;
-  top: -58px;
+  top: -62px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  gap: 18px;
   align-items: center;
+  justify-content: center;
+  gap: 16px;
+  z-index: 20;
+}
+
+.top-badge span {
+  font-size: 22px;
   color: #ffe7a3;
-  z-index: 10;
+  filter: drop-shadow(0 0 10px rgba(255,214,118,.75));
 }
 
 .church-icon {
@@ -123,70 +129,75 @@ body {
   border-radius: 50%;
   background:
     radial-gradient(circle at 35% 25%, rgba(255,255,255,.22), transparent 35%),
-    linear-gradient(145deg, #061a2f, #0b3154);
+    linear-gradient(145deg,#061a2f,#0b3154);
   border: 5px solid #d8aa4f;
-  display: grid;
-  place-items: center;
-  font-size: 52px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   box-shadow:
     0 18px 35px rgba(0,0,0,.45),
     0 0 30px rgba(255,214,118,.45);
-  overflow: visible;
-  transition: .35s ease;
+  overflow: hidden;
 }
 
-.eyebrow {
-  margin-top: 4px;
-  margin-bottom: 28px;
-  font-family: 'Inter', sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  font-size: 12px;
-  color: #8d5d16;
-  font-weight: 700;
+.church-symbol{
+  font-size:52px;
+  color:#fff;
+  line-height:1;
 }
 
-.title-space {
-  height: 0;
+.eyebrow{
+  margin-top:20px;
+  margin-bottom:30px;
+  font-family:'Inter',sans-serif;
+  text-transform:uppercase;
+  letter-spacing:3px;
+  font-size:12px;
+  color:#8d5d16;
+  font-weight:700;
 }
 
-h1 {
-  margin-top: 0;
-  font-family: 'Great Vibes', cursive;
-  font-size: clamp(70px, 13vw, 128px);
-  line-height: .95;
-  font-weight: 400;
-  color: #9a6818;
-  text-shadow: 0 6px 22px rgba(255,255,255,.58);
+.title-space{
+  height:0;
 }
 
-.gold-divider {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 14px;
-  margin: 18px auto 24px;
-  color: #b87f20;
+h1{
+  margin-top:0;
+  font-family:'Great Vibes',cursive;
+  font-size:clamp(70px,13vw,128px);
+  line-height:.95;
+  font-weight:400;
+  color:#9a6818;
+  text-shadow:0 6px 22px rgba(255,255,255,.58);
 }
 
-.gold-divider span {
-  width: min(110px, 28vw);
-  height: 1.5px;
-  background: linear-gradient(90deg, transparent, #d8aa4f, transparent);
+.gold-divider{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:14px;
+  margin:18px auto 24px;
+  color:#b87f20;
 }
 
-.gold-divider b {
-  font-size: 25px;
-  filter: drop-shadow(0 0 8px rgba(255,203,98,.75));
+.gold-divider span{
+  width:min(110px,28vw);
+  height:1.5px;
+  background:linear-gradient(90deg,transparent,#d8aa4f,transparent);
 }
 
-.intro {
-  max-width: 630px;
-  margin: 0 auto 28px;
-  color: #09253f;
-  font-size: clamp(19px, 3vw, 25px);
-  line-height: 1.35;
-  font-weight: 700;
+.gold-divider b{
+  font-size:25px;
+  filter:drop-shadow(0 0 8px rgba(255,203,98,.75));
+}
+
+.intro{
+  max-width:630px;
+  margin:0 auto 28px;
+  color:#09253f;
+  font-size:clamp(19px,3vw,25px);
+  line-height:1.35;
+  font-weight:700;
 }
 
 .names {
@@ -205,7 +216,7 @@ h1 {
 .names h2 {
   font-family: 'Inter', sans-serif;
   color: #ffe7a3;
-  font-size: clamp(12px, 2.2vw, 16px);
+  font-size: clamp(12px,2.2vw,16px);
   letter-spacing: 2.8px;
   text-transform: uppercase;
   margin-bottom: 18px;
@@ -228,15 +239,16 @@ h1 {
 
 .names h3 {
   color: #f5d58d;
-  font-size: clamp(27px, 5vw, 42px);
+  font-size: clamp(27px,5vw,42px);
   font-weight: 600;
   line-height: 1.08;
 }
+
 .message {
   max-width: 660px;
   margin: 15px auto;
   color: #08253f;
-  font-size: clamp(17px, 2.6vw, 21px);
+  font-size: clamp(17px,2.6vw,21px);
   line-height: 1.48;
   font-weight: 700;
 }
@@ -270,7 +282,7 @@ h1 {
 .signature {
   font-family: 'Great Vibes', cursive;
   color: #8b5d15;
-  font-size: clamp(36px, 7vw, 52px);
+  font-size: clamp(36px,7vw,52px);
   line-height: 1;
   margin-top: 12px;
 }
@@ -279,14 +291,14 @@ h1 {
   margin-top: 8px;
   font-family: 'Inter', sans-serif;
   color: #09253f;
-  font-size: clamp(13px, 2.5vw, 17px);
+  font-size: clamp(13px,2.5vw,17px);
   text-transform: uppercase;
   letter-spacing: 4px;
   font-weight: 800;
 }
 
 .scripture-card {
-  width: min(100%, 800px);
+  width: min(100%,800px);
   margin-top: 28px;
   padding: 34px 30px 30px;
   text-align: center;
@@ -310,15 +322,15 @@ h1 {
 
 .book {
   font-size: 34px;
-  margin-bottom: 10px;
   color: #ffe7a3;
+  margin-bottom: 10px;
   filter: drop-shadow(0 0 10px rgba(255,220,130,.85));
 }
 
 .scripture-card p {
   color: #fff9eb;
   text-shadow: 0 2px 16px rgba(0,0,0,.55);
-  font-size: clamp(18px, 3vw, 24px);
+  font-size: clamp(18px,3vw,24px);
   line-height: 1.46;
   font-style: italic;
 }
@@ -343,6 +355,10 @@ h1 {
   filter: drop-shadow(0 6px 8px rgba(0,0,0,.25));
 }
 
+/* -------------------- */
+/* Animations */
+/* -------------------- */
+
 @keyframes riseIn {
   from {
     opacity: 0;
@@ -363,7 +379,9 @@ h1 {
 }
 
 @keyframes shine {
-  0%,42% {
+
+  0%,
+  42% {
     transform: translateX(-40%) rotate(25deg);
     opacity: 0;
   }
@@ -372,7 +390,8 @@ h1 {
     opacity: .75;
   }
 
-  72%,100% {
+  72%,
+  100% {
     transform: translateX(260%) rotate(25deg);
     opacity: 0;
   }
@@ -391,7 +410,9 @@ h1 {
 }
 
 @keyframes heartPulse {
-  0%,100% {
+
+  0%,
+  100% {
     transform: scale(1);
     box-shadow:
       0 0 0 0 rgba(255,111,114,.45),
@@ -422,6 +443,10 @@ h1 {
   }
 }
 
+/* -------------------- */
+/* Tablet */
+/* -------------------- */
+
 @media (max-width:760px) {
 
   .hero-image img {
@@ -429,11 +454,11 @@ h1 {
   }
 
   .page {
-    padding: 78px 12px 32px;
+    padding: 85px 12px 32px;
   }
 
   .thank-card {
-    padding: 72px 22px 34px;
+    padding: 78px 22px 34px;
     border-radius: 30px;
   }
 
@@ -443,13 +468,16 @@ h1 {
   }
 
   .top-badge {
-    top: -45px;
+    top: -50px;
   }
 
   .church-icon {
-    width: 92px;
-    height: 92px;
-    font-size: 38px;
+    width: 95px;
+    height: 95px;
+  }
+
+  .church-symbol {
+    font-size: 42px;
   }
 
   .eyebrow {
@@ -473,14 +501,31 @@ h1 {
   }
 }
 
+/* -------------------- */
+/* Mobile */
+/* -------------------- */
+
 @media (max-width:430px) {
 
   .page {
-    padding-inline: 9px;
+    padding-inline: 10px;
   }
 
   .thank-card {
-    padding-inline: 15px;
+    padding: 75px 16px 30px;
+  }
+
+  .church-icon {
+    width: 82px;
+    height: 82px;
+  }
+
+  .church-symbol {
+    font-size: 36px;
+  }
+
+  h1 {
+    font-size: clamp(58px,16vw,78px);
   }
 
   .intro,
@@ -494,5 +539,14 @@ h1 {
 
   .gold-divider {
     gap: 9px;
+  }
+
+  .family {
+    font-size: 12px;
+    letter-spacing: 2px;
+  }
+
+  .scripture-card p {
+    font-size: 18px;
   }
 }
