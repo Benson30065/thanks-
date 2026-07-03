@@ -94,12 +94,7 @@ body {
   left: -40%;
   width: 60%;
   height: 150%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255,255,255,.35),
-    transparent
-  );
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.35), transparent);
   transform: rotate(25deg);
   animation: shine 6s ease-in-out infinite;
   pointer-events: none;
@@ -127,77 +122,81 @@ body {
   width: 120px;
   height: 120px;
   border-radius: 50%;
-  background:
-    radial-gradient(circle at 35% 25%, rgba(255,255,255,.22), transparent 35%),
-    linear-gradient(145deg,#061a2f,#0b3154);
+  background: #ffffff;
   border: 5px solid #d8aa4f;
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
   box-shadow:
     0 18px 35px rgba(0,0,0,.45),
     0 0 30px rgba(255,214,118,.45);
-  overflow: hidden;
 }
 
-.church-symbol{
-  font-size:52px;
-  color:#fff;
-  line-height:1;
+.church-logo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  transition: transform .35s ease;
 }
 
-.eyebrow{
-  margin-top:20px;
-  margin-bottom:30px;
-  font-family:'Inter',sans-serif;
-  text-transform:uppercase;
-  letter-spacing:3px;
-  font-size:12px;
-  color:#8d5d16;
-  font-weight:700;
+.church-icon:hover .church-logo {
+  transform: scale(1.05);
 }
 
-.title-space{
-  height:0;
+.eyebrow {
+  margin-top: 20px;
+  margin-bottom: 30px;
+  font-family: 'Inter', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 12px;
+  color: #8d5d16;
+  font-weight: 700;
 }
 
-h1{
-  margin-top:0;
-  font-family:'Great Vibes',cursive;
-  font-size:clamp(70px,13vw,128px);
-  line-height:.95;
-  font-weight:400;
-  color:#9a6818;
-  text-shadow:0 6px 22px rgba(255,255,255,.58);
+.title-space {
+  height: 0;
 }
 
-.gold-divider{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:14px;
-  margin:18px auto 24px;
-  color:#b87f20;
+h1 {
+  margin-top: 0;
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(70px, 13vw, 128px);
+  line-height: .95;
+  font-weight: 400;
+  color: #9a6818;
+  text-shadow: 0 6px 22px rgba(255,255,255,.58);
 }
 
-.gold-divider span{
-  width:min(110px,28vw);
-  height:1.5px;
-  background:linear-gradient(90deg,transparent,#d8aa4f,transparent);
+.gold-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin: 18px auto 24px;
+  color: #b87f20;
 }
 
-.gold-divider b{
-  font-size:25px;
-  filter:drop-shadow(0 0 8px rgba(255,203,98,.75));
+.gold-divider span {
+  width: min(110px, 28vw);
+  height: 1.5px;
+  background: linear-gradient(90deg, transparent, #d8aa4f, transparent);
 }
 
-.intro{
-  max-width:630px;
-  margin:0 auto 28px;
-  color:#09253f;
-  font-size:clamp(19px,3vw,25px);
-  line-height:1.35;
-  font-weight:700;
+.gold-divider b {
+  font-size: 25px;
+  filter: drop-shadow(0 0 8px rgba(255,203,98,.75));
+}
+
+.intro {
+  max-width: 630px;
+  margin: 0 auto 28px;
+  color: #09253f;
+  font-size: clamp(19px, 3vw, 25px);
+  line-height: 1.35;
+  font-weight: 700;
 }
 
 .names {
@@ -342,211 +341,4 @@ h1{
   text-transform: uppercase;
   letter-spacing: 3px;
   font-size: 14px;
-}
-
-.petal {
-  position: fixed;
-  top: -45px;
-  z-index: 5;
-  pointer-events: none;
-  animation-name: fall;
-  animation-timing-function: linear;
-  animation-fill-mode: forwards;
-  filter: drop-shadow(0 6px 8px rgba(0,0,0,.25));
-}
-
-/* -------------------- */
-/* Animations */
-/* -------------------- */
-
-@keyframes riseIn {
-  from {
-    opacity: 0;
-    transform: translateY(55px) scale(.96);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-@keyframes scriptureIn {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes shine {
-
-  0%,
-  42% {
-    transform: translateX(-40%) rotate(25deg);
-    opacity: 0;
-  }
-
-  55% {
-    opacity: .75;
-  }
-
-  72%,
-  100% {
-    transform: translateX(260%) rotate(25deg);
-    opacity: 0;
-  }
-}
-
-@keyframes raysMove {
-  from {
-    opacity: .35;
-    transform: translateX(-40px);
-  }
-
-  to {
-    opacity: .75;
-    transform: translateX(40px);
-  }
-}
-
-@keyframes heartPulse {
-
-  0%,
-  100% {
-    transform: scale(1);
-    box-shadow:
-      0 0 0 0 rgba(255,111,114,.45),
-      0 0 34px rgba(255,111,114,.7);
-  }
-
-  50% {
-    transform: scale(1.13);
-    box-shadow:
-      0 0 0 16px rgba(255,111,114,0),
-      0 0 46px rgba(255,135,132,.95);
-  }
-}
-
-@keyframes fall {
-  0% {
-    transform: translate3d(0,-10vh,0) rotate(0deg);
-    opacity: 0;
-  }
-
-  10% {
-    opacity: var(--petal-opacity);
-  }
-
-  100% {
-    transform: translate3d(var(--drift),112vh,0) rotate(var(--spin));
-    opacity: 0;
-  }
-}
-
-/* -------------------- */
-/* Tablet */
-/* -------------------- */
-
-@media (max-width:760px) {
-
-  .hero-image img {
-    transform: scale(1.02);
-  }
-
-  .page {
-    padding: 85px 12px 32px;
-  }
-
-  .thank-card {
-    padding: 78px 22px 34px;
-    border-radius: 30px;
-  }
-
-  .thank-card::before {
-    inset: 10px;
-    border-radius: 23px;
-  }
-
-  .top-badge {
-    top: -50px;
-  }
-
-  .church-icon {
-    width: 95px;
-    height: 95px;
-  }
-
-  .church-symbol {
-    font-size: 42px;
-  }
-
-  .eyebrow {
-    font-size: 10px;
-    letter-spacing: 2.2px;
-    margin-bottom: 22px;
-  }
-
-  .names {
-    padding: 24px 12px;
-    border-radius: 19px;
-  }
-
-  .family {
-    letter-spacing: 2.2px;
-  }
-
-  .scripture-card {
-    padding: 24px 18px;
-    border-radius: 24px;
-  }
-}
-
-/* -------------------- */
-/* Mobile */
-/* -------------------- */
-
-@media (max-width:430px) {
-
-  .page {
-    padding-inline: 10px;
-  }
-
-  .thank-card {
-    padding: 75px 16px 30px;
-  }
-
-  .church-icon {
-    width: 82px;
-    height: 82px;
-  }
-
-  .church-symbol {
-    font-size: 36px;
-  }
-
-  h1 {
-    font-size: clamp(58px,16vw,78px);
-  }
-
-  .intro,
-  .message {
-    line-height: 1.42;
-  }
-
-  .names h2 {
-    letter-spacing: 1.8px;
-  }
-
-  .gold-divider {
-    gap: 9px;
-  }
-
-  .family {
-    font-size: 12px;
-    letter-spacing: 2px;
-  }
-
-  .scripture-card p {
-    font-size: 18px;
-  }
 }
