@@ -1,344 +1,850 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Inter:wght@400;500;600;700&display=swap');
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-body {
-  min-height: 100vh;
-  overflow-x: hidden;
-  font-family: 'Cormorant Garamond', serif;
-  background: #041424;
+html{
+    scroll-behavior:smooth;
 }
 
-.hero-image {
-  position: fixed;
-  inset: 0;
-  z-index: -5;
-  overflow: hidden;
+body{
+    min-height:100vh;
+    overflow-x:hidden;
+    font-family:'Cormorant Garamond',serif;
+    background:#041424;
+    color:#08253f;
 }
 
-.hero-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: brightness(.62) saturate(1.18) contrast(1.05);
-  transform: scale(1.08);
+/* ===========================
+   Background
+=========================== */
+
+.hero-image{
+    position:fixed;
+    inset:0;
+    z-index:-5;
+    overflow:hidden;
 }
 
-.background-glow {
-  position: fixed;
-  inset: 0;
-  z-index: -4;
-  pointer-events: none;
-  background:
-    radial-gradient(circle at 50% 15%, rgba(255,226,160,.38), transparent 34%),
-    linear-gradient(180deg, rgba(2,10,22,.18), rgba(2,10,22,.78));
+.hero-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transform:scale(1.08);
+    filter:
+        brightness(.62)
+        saturate(1.18)
+        contrast(1.05);
 }
 
-.light-rays {
-  position: fixed;
-  inset: 0;
-  z-index: -3;
-  pointer-events: none;
-  background:
-    linear-gradient(110deg, transparent 20%, rgba(255,221,140,.14), transparent 45%),
-    linear-gradient(75deg, transparent 35%, rgba(255,255,255,.09), transparent 60%);
-  animation: raysMove 12s ease-in-out infinite alternate;
+.background-glow{
+    position:fixed;
+    inset:0;
+    z-index:-4;
+    pointer-events:none;
+    background:
+        radial-gradient(
+            circle at 50% 15%,
+            rgba(255,226,160,.38),
+            transparent 34%
+        ),
+        linear-gradient(
+            180deg,
+            rgba(2,10,22,.18),
+            rgba(2,10,22,.78)
+        );
 }
 
-.page {
-  width: min(100%, 980px);
-  min-height: 100vh;
-  margin: auto;
-  padding: 110px 18px 44px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.light-rays{
+    position:fixed;
+    inset:0;
+    z-index:-3;
+    pointer-events:none;
+
+    background:
+        linear-gradient(
+            110deg,
+            transparent 20%,
+            rgba(255,221,140,.14),
+            transparent 45%
+        ),
+        linear-gradient(
+            75deg,
+            transparent 35%,
+            rgba(255,255,255,.09),
+            transparent 60%
+        );
+
+    animation:raysMove 12s ease-in-out infinite alternate;
 }
 
-.thank-card {
-  width: min(100%, 800px);
-  position: relative;
-  text-align: center;
-  padding: 88px 62px 42px;
-  border-radius: 42px;
-  background:
-    linear-gradient(145deg, rgba(255,255,255,.56), rgba(255,255,255,.20));
-  backdrop-filter: blur(24px) saturate(145%);
-  -webkit-backdrop-filter: blur(24px) saturate(145%);
-  border: 1px solid rgba(255,255,255,.78);
-  box-shadow:
-    0 40px 110px rgba(0,0,0,.52),
-    inset 0 0 44px rgba(255,255,255,.25);
-  overflow: visible;
-  transform-style: preserve-3d;
-  animation: riseIn 1.2s ease both;
+.petals{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    overflow:hidden;
+    z-index:5;
 }
 
-.thank-card::before {
-  content: "";
-  position: absolute;
-  inset: 13px;
-  border-radius: 32px;
-  border: 1px solid rgba(255,224,150,.9);
-  pointer-events: none;
+/* ===========================
+   Main Layout
+=========================== */
+
+.page{
+    width:min(100%,980px);
+    min-height:100vh;
+    margin:auto;
+    padding:92px 18px 44px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
 }
 
-.thank-card::after {
-  content: "";
-  position: absolute;
-  top: -45%;
-  left: -40%;
-  width: 60%;
-  height: 150%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,.35), transparent);
-  transform: rotate(25deg);
-  animation: shine 6s ease-in-out infinite;
-  pointer-events: none;
+/* ===========================
+   Thank You Card
+=========================== */
+
+.thank-card{
+    width:min(100%,800px);
+    position:relative;
+    text-align:center;
+
+    padding:88px 62px 42px;
+
+    border-radius:42px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.56),
+            rgba(255,255,255,.20)
+        );
+
+    backdrop-filter:blur(24px) saturate(145%);
+    -webkit-backdrop-filter:blur(24px) saturate(145%);
+
+    border:1px solid rgba(255,255,255,.78);
+
+    box-shadow:
+        0 40px 110px rgba(0,0,0,.52),
+        inset 0 0 44px rgba(255,255,255,.25);
+
+    overflow:hidden;
+
+    transform-style:preserve-3d;
+
+    animation:riseIn 1.2s ease both;
 }
 
-.top-badge {
-  position: absolute;
-  top: -62px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 16px;
-  z-index: 20;
+/* ===========================
+   Gold Inner Border
+=========================== */
+
+.thank-card::before{
+    content:"";
+    position:absolute;
+    inset:13px;
+
+    border-radius:32px;
+
+    border:1px solid rgba(255,224,150,.90);
+
+    pointer-events:none;
 }
 
-.top-badge span {
-  font-size: 22px;
-  color: #ffe7a3;
-  filter: drop-shadow(0 0 10px rgba(255,214,118,.75));
+/* ===========================
+   Glass Shine
+=========================== */
+
+.thank-card::after{
+    content:"";
+
+    position:absolute;
+
+    top:-45%;
+    left:-40%;
+
+    width:60%;
+    height:150%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.35),
+            transparent
+        );
+
+    transform:rotate(25deg);
+
+    animation:shine 6s ease-in-out infinite;
+
+    pointer-events:none;
 }
 
-.church-icon {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  background: #ffffff;
-  border: 5px solid #d8aa4f;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  box-shadow:
-    0 18px 35px rgba(0,0,0,.45),
-    0 0 30px rgba(255,214,118,.45);
+/* ===========================
+   Church Badge
+=========================== */
+
+.top-badge{
+    position:absolute;
+    top:-58px;
+    left:50%;
+    transform:translateX(-50%);
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:18px;
+
+    z-index:20;
 }
 
-.church-logo {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 50%;
-  transition: transform .35s ease;
+.top-badge span{
+    color:#ffe7a3;
+    font-size:22px;
+    filter:drop-shadow(0 0 10px rgba(255,214,118,.75));
 }
 
-.church-icon:hover .church-logo {
-  transform: scale(1.05);
+/* ===========================
+   Church Logo
+=========================== */
+
+.church-icon{
+    width:120px;
+    height:120px;
+
+    border-radius:50%;
+
+    background:#ffffff;
+
+    border:5px solid #d8aa4f;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    overflow:hidden;
+
+    box-shadow:
+        0 18px 35px rgba(0,0,0,.45),
+        0 0 30px rgba(255,214,118,.45);
+
+    transition:.35s ease;
 }
 
-.eyebrow {
-  margin-top: 20px;
-  margin-bottom: 30px;
-  font-family: 'Inter', sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  font-size: 12px;
-  color: #8d5d16;
-  font-weight: 700;
+.church-logo{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    border-radius:50%;
+    transition:transform .35s ease;
 }
 
-.title-space {
-  height: 0;
+.church-icon:hover .church-logo{
+    transform:scale(1.05);
 }
 
-h1 {
-  margin-top: 0;
-  font-family: 'Great Vibes', cursive;
-  font-size: clamp(70px, 13vw, 128px);
-  line-height: .95;
-  font-weight: 400;
-  color: #9a6818;
-  text-shadow: 0 6px 22px rgba(255,255,255,.58);
+/* ===========================
+   Heading
+=========================== */
+
+.eyebrow{
+    margin-top:10px;
+    margin-bottom:30px;
+
+    font-family:'Inter',sans-serif;
+    text-transform:uppercase;
+
+    letter-spacing:3px;
+
+    font-size:12px;
+    font-weight:700;
+
+    color:#8d5d16;
 }
 
-.gold-divider {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 14px;
-  margin: 18px auto 24px;
-  color: #b87f20;
+.title-space{
+    height:0;
 }
 
-.gold-divider span {
-  width: min(110px, 28vw);
-  height: 1.5px;
-  background: linear-gradient(90deg, transparent, #d8aa4f, transparent);
+h1{
+    margin-top:0;
+
+    font-family:'Great Vibes',cursive;
+
+    font-size:clamp(70px,13vw,128px);
+
+    line-height:.95;
+
+    font-weight:400;
+
+    color:#9a6818;
+
+    text-shadow:
+        0 6px 22px rgba(255,255,255,.58);
 }
 
-.gold-divider b {
-  font-size: 25px;
-  filter: drop-shadow(0 0 8px rgba(255,203,98,.75));
+/* ===========================
+   Divider
+=========================== */
+
+.gold-divider{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    gap:14px;
+
+    margin:18px auto 24px;
+
+    color:#b87f20;
 }
 
-.intro {
-  max-width: 630px;
-  margin: 0 auto 28px;
-  color: #09253f;
-  font-size: clamp(19px, 3vw, 25px);
-  line-height: 1.35;
-  font-weight: 700;
+.gold-divider span{
+    width:min(110px,28vw);
+    height:1.5px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #d8aa4f,
+            transparent
+        );
 }
 
-.names {
-  margin: 24px auto 28px;
-  padding: 30px 24px;
-  border-radius: 24px;
-  background:
-    radial-gradient(circle at top, rgba(255,255,255,.11), transparent 40%),
-    linear-gradient(145deg, rgba(6,27,49,.96), rgba(10,54,90,.96));
-  border: 1.5px solid #d8aa4f;
-  box-shadow:
-    inset 0 0 32px rgba(0,0,0,.42),
-    0 18px 42px rgba(0,0,0,.28);
+.gold-divider b{
+    font-size:25px;
+
+    filter:
+        drop-shadow(
+            0 0 8px rgba(255,203,98,.75)
+        );
 }
 
-.names h2 {
-  font-family: 'Inter', sans-serif;
-  color: #ffe7a3;
-  font-size: clamp(12px,2.2vw,16px);
-  letter-spacing: 2.8px;
-  text-transform: uppercase;
-  margin-bottom: 18px;
+/* ===========================
+   Intro Text
+=========================== */
+
+.intro{
+    max-width:630px;
+    margin:0 auto 28px;
+
+    color:#09253f;
+
+    font-size:clamp(19px,3vw,25px);
+
+    line-height:1.35;
+
+    font-weight:700;
 }
 
-.names article {
-  padding: 10px 0 13px;
-  position: relative;
+/* ===========================
+   Names Section
+=========================== */
+
+.names{
+    margin:24px auto 28px;
+
+    padding:30px 24px;
+
+    border-radius:24px;
+
+    background:
+        radial-gradient(
+            circle at top,
+            rgba(255,255,255,.11),
+            transparent 40%
+        ),
+        linear-gradient(
+            145deg,
+            rgba(6,27,49,.96),
+            rgba(10,54,90,.96)
+        );
+
+    border:1.5px solid #d8aa4f;
+
+    box-shadow:
+        inset 0 0 32px rgba(0,0,0,.42),
+        0 18px 42px rgba(0,0,0,.28);
 }
 
-.names article:not(:last-child)::after {
-  content: "";
-  width: 74%;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, #d8aa4f, transparent);
-  position: absolute;
-  left: 13%;
-  bottom: 0;
+.names h2{
+    font-family:'Inter',sans-serif;
+
+    color:#ffe7a3;
+
+    font-size:clamp(12px,2.2vw,16px);
+
+    letter-spacing:2.8px;
+
+    text-transform:uppercase;
+
+    margin-bottom:18px;
 }
 
-.names h3 {
-  color: #f5d58d;
-  font-size: clamp(27px,5vw,42px);
-  font-weight: 600;
-  line-height: 1.08;
+.names article{
+    padding:10px 0 13px;
+
+    position:relative;
 }
 
-.message {
-  max-width: 660px;
-  margin: 15px auto;
-  color: #08253f;
-  font-size: clamp(17px,2.6vw,21px);
-  line-height: 1.48;
-  font-weight: 700;
+.names article:not(:last-child)::after{
+    content:"";
+
+    width:74%;
+    height:1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #d8aa4f,
+            transparent
+        );
+
+    position:absolute;
+
+    left:13%;
+    bottom:0;
 }
 
-.message strong {
-  color: #03172a;
-  font-weight: 700;
+.names h3{
+    color:#f5d58d;
+
+    font-size:clamp(27px,5vw,42px);
+
+    font-weight:600;
+
+    line-height:1.08;
 }
 
-.small {
-  margin-block: 18px;
+/* ===========================
+   Messages
+=========================== */
+
+.message{
+    max-width:660px;
+
+    margin:15px auto;
+
+    color:#08253f;
+
+    font-size:clamp(17px,2.6vw,21px);
+
+    line-height:1.48;
+
+    font-weight:700;
 }
 
-.heart {
-  width: 60px;
-  height: 60px;
-  margin: 24px auto 12px;
-  border-radius: 50%;
-  display: grid;
-  place-items: center;
-  background:
-    radial-gradient(circle at 35% 25%, #ffd0ca, #e95358 38%, #8a111f 100%);
-  color: white;
-  font-size: 30px;
-  box-shadow:
-    0 0 0 rgba(255,111,114,.5),
-    0 0 34px rgba(255,111,114,.7);
-  animation: heartPulse 1.75s ease-in-out infinite;
+.message strong{
+    color:#03172a;
+    font-weight:700;
 }
 
-.signature {
-  font-family: 'Great Vibes', cursive;
-  color: #8b5d15;
-  font-size: clamp(36px,7vw,52px);
-  line-height: 1;
-  margin-top: 12px;
+.small{
+    margin-block:18px;
 }
 
-.family {
-  margin-top: 8px;
-  font-family: 'Inter', sans-serif;
-  color: #09253f;
-  font-size: clamp(13px,2.5vw,17px);
-  text-transform: uppercase;
-  letter-spacing: 4px;
-  font-weight: 800;
+/* ===========================
+   Heart
+=========================== */
+
+.heart{
+    width:60px;
+    height:60px;
+
+    margin:24px auto 12px;
+
+    border-radius:50%;
+
+    display:grid;
+    place-items:center;
+
+    background:
+        radial-gradient(
+            circle at 35% 25%,
+            #ffd0ca,
+            #e95358 38%,
+            #8a111f 100%
+        );
+
+    color:#fff;
+
+    font-size:30px;
+
+    box-shadow:
+        0 0 0 rgba(255,111,114,.5),
+        0 0 34px rgba(255,111,114,.7);
+
+    animation:heartPulse 1.75s ease-in-out infinite;
 }
 
-.scripture-card {
-  width: min(100%,800px);
-  margin-top: 28px;
-  padding: 34px 30px 30px;
-  text-align: center;
-  border-radius: 30px;
-  background:
-    linear-gradient(145deg, rgba(255,255,255,.40), rgba(255,255,255,.16)),
-    rgba(255,248,232,.30);
-  backdrop-filter: blur(18px) saturate(130%);
-  -webkit-backdrop-filter: blur(18px) saturate(130%);
-  border: 1px solid rgba(255,255,255,.68);
-  box-shadow:
-    0 25px 70px rgba(0,0,0,.35),
-    inset 0 0 26px rgba(255,231,163,.16);
-  opacity: 0;
-  transform: translateY(28px);
+/* ===========================
+   Signature
+=========================== */
+
+.signature{
+    font-family:'Great Vibes',cursive;
+
+    color:#8b5d15;
+
+    font-size:clamp(36px,7vw,52px);
+
+    line-height:1;
+
+    margin-top:12px;
 }
 
-.scripture-card.visible {
-  animation: scriptureIn 1.1s ease forwards;
+.family{
+    margin-top:8px;
+
+    font-family:'Inter',sans-serif;
+
+    color:#09253f;
+
+    font-size:clamp(13px,2.5vw,17px);
+
+    text-transform:uppercase;
+
+    letter-spacing:4px;
+
+    font-weight:800;
 }
 
-.book {
-  font-size: 34px;
-  color: #ffe7a3;
-  margin-bottom: 10px;
-  filter: drop-shadow(0 0 10px rgba(255,220,130,.85));
+/* ===========================
+   Scripture Card
+=========================== */
+
+.scripture-card{
+    width:min(100%,800px);
+
+    margin-top:28px;
+
+    padding:34px 30px 30px;
+
+    text-align:center;
+
+    border-radius:30px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.40),
+            rgba(255,255,255,.16)
+        ),
+        rgba(255,248,232,.30);
+
+    backdrop-filter:blur(18px) saturate(130%);
+    -webkit-backdrop-filter:blur(18px) saturate(130%);
+
+    border:1px solid rgba(255,255,255,.68);
+
+    box-shadow:
+        0 25px 70px rgba(0,0,0,.35),
+        inset 0 0 26px rgba(255,231,163,.16);
+
+    opacity:0;
+
+    transform:translateY(28px);
 }
 
-.scripture-card p {
-  color: #fff9eb;
-  text-shadow: 0 2px 16px rgba(0,0,0,.55);
-  font-size: clamp(18px,3vw,24px);
-  line-height: 1.46;
-  font-style: italic;
+.scripture-card.visible{
+    animation:scriptureIn 1.1s ease forwards;
 }
 
-.scripture-card h4 {
-  margin-top: 15px;
-  font-family: 'Inter', sans-serif;
-  color: #ffe7a3;
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  font-size: 14px;
+.book{
+    font-size:34px;
+
+    color:#ffe7a3;
+
+    margin-bottom:10px;
+
+    filter:
+        drop-shadow(
+            0 0 10px rgba(255,220,130,.85)
+        );
+}
+
+.scripture-card p{
+    color:#fff9eb;
+
+    text-shadow:
+        0 2px 16px rgba(0,0,0,.55);
+
+    font-size:clamp(18px,3vw,24px);
+
+    line-height:1.46;
+
+    font-style:italic;
+}
+
+.scripture-card h4{
+    margin-top:15px;
+
+    font-family:'Inter',sans-serif;
+
+    color:#ffe7a3;
+
+    text-transform:uppercase;
+
+    letter-spacing:3px;
+
+    font-size:14px;
+}
+
+/* ===========================
+   Petals
+=========================== */
+
+.petal{
+    position:fixed;
+
+    top:-45px;
+
+    z-index:5;
+
+    pointer-events:none;
+
+    animation-name:fall;
+
+    animation-timing-function:linear;
+
+    animation-fill-mode:forwards;
+
+    filter:
+        drop-shadow(
+            0 6px 8px rgba(0,0,0,.25)
+        );
+}
+
+/* ===========================
+   Animations
+=========================== */
+
+@keyframes riseIn{
+    from{
+        opacity:0;
+
+        transform:
+            translateY(55px)
+            scale(.96);
+    }
+
+    to{
+        opacity:1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+@keyframes scriptureIn{
+    to{
+        opacity:1;
+
+        transform:translateY(0);
+    }
+}
+
+@keyframes shine{
+    0%,
+    42%{
+        transform:
+            translateX(-40%)
+            rotate(25deg);
+
+        opacity:0;
+    }
+
+    55%{
+        opacity:.75;
+    }
+
+    72%,
+    100%{
+        transform:
+            translateX(260%)
+            rotate(25deg);
+
+        opacity:0;
+    }
+}
+
+@keyframes raysMove{
+    from{
+        opacity:.35;
+
+        transform:translateX(-40px);
+    }
+
+    to{
+        opacity:.75;
+
+        transform:translateX(40px);
+    }
+}
+
+@keyframes heartPulse{
+    0%,
+    100%{
+        transform:scale(1);
+
+        box-shadow:
+            0 0 0 0 rgba(255,111,114,.45),
+            0 0 34px rgba(255,111,114,.7);
+    }
+
+    50%{
+        transform:scale(1.13);
+
+        box-shadow:
+            0 0 0 16px rgba(255,111,114,0),
+            0 0 46px rgba(255,135,132,.95);
+    }
+}
+
+@keyframes fall{
+    0%{
+        transform:
+            translate3d(0,-10vh,0)
+            rotate(0deg);
+
+        opacity:0;
+    }
+
+    10%{
+        opacity:var(--petal-opacity);
+    }
+
+    100%{
+        transform:
+            translate3d(var(--drift),112vh,0)
+            rotate(var(--spin));
+
+        opacity:0;
+    }
+}
+
+/* ===========================
+   Tablet
+=========================== */
+
+@media (max-width:760px){
+
+    .hero-image img{
+        transform:scale(1.02);
+    }
+
+    .page{
+        padding:78px 12px 32px;
+    }
+
+    .thank-card{
+        padding:72px 22px 34px;
+        border-radius:30px;
+    }
+
+    .thank-card::before{
+        inset:10px;
+        border-radius:23px;
+    }
+
+    .top-badge{
+        top:-48px;
+    }
+
+    .church-icon{
+        width:92px;
+        height:92px;
+    }
+
+    .top-badge span{
+        font-size:18px;
+    }
+
+    .eyebrow{
+        font-size:10px;
+        letter-spacing:2.2px;
+        margin-bottom:22px;
+    }
+
+    .names{
+        padding:24px 12px;
+        border-radius:19px;
+    }
+
+    .family{
+        letter-spacing:2px;
+    }
+
+    .scripture-card{
+        padding:24px 18px;
+        border-radius:24px;
+    }
+}
+
+/* ===========================
+   Mobile
+=========================== */
+
+@media (max-width:430px){
+
+    .page{
+        padding-inline:9px;
+    }
+
+    .thank-card{
+        padding:70px 15px 30px;
+    }
+
+    .church-icon{
+        width:82px;
+        height:82px;
+        border-width:4px;
+    }
+
+    .top-badge{
+        top:-42px;
+        gap:10px;
+    }
+
+    .top-badge span{
+        font-size:16px;
+    }
+
+    h1{
+        font-size:clamp(58px,16vw,80px);
+    }
+
+    .intro,
+    .message{
+        line-height:1.42;
+    }
+
+    .names h2{
+        letter-spacing:1.8px;
+    }
+
+    .gold-divider{
+        gap:9px;
+    }
+
+    .gold-divider span{
+        width:70px;
+    }
+
+    .family{
+        font-size:12px;
+        letter-spacing:1.5px;
+    }
+
+    .scripture-card p{
+        font-size:18px;
+    }
 }
